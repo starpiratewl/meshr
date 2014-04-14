@@ -10,6 +10,8 @@ import(org.MeSH.Aca.db)
 import(org.MeSH.Atu.K84.db)
 import(org.MeSH.Bsu.168.db)
 import(org.MeSH.Syn.db)
+import(cummeRbund)
+import(org.Hs.eg.db)
 
 importFrom(BiocGenerics, annotation, "annotation<-")
 
