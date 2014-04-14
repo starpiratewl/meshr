@@ -121,7 +121,7 @@ For some minor species including non-model organisms, which have no sufficient d
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\linewidth]{fig3.eps}
+\includegraphics[width=\linewidth,angle=270]{fig3.eps}
 \caption{120 organisms for org.MeSH.XXX.db and those source databases}
 \label{fig3}
 \end{figure}
@@ -365,11 +365,11 @@ example("makeGeneMeSHPackage")
 \subsubsection{MeSH enrichment analysis}
 The \Rpackage{meshr} package is designed to conduct an enrichment analysis for MeSH.  The idea behind this package is analogous to GO enrichment analysis, where sets of genes is analyzed to extract common annotated biological properties. The usage of \Rpackage{meshr} closely follows that of the Bioconductor \Rpackage{GOstats} package. Thus, users who are familiar with \Rpackage{GOstats} may easily handle \Rpackage{meshr}. 
 
-The \Rpackage{meshr} package accepts selected and universal genes as input, and returns significantly overrepresented MeSH terms. It is used in conjunction with \Rpackage{MeSH.db} package and one of the annotation packages, e.g., \Rpackage{org.MeSH.Hsa.db}. This section serves as a quick guide to the \Rpackage{meshr}, while illustrating entire process to perform a MeSH enrichment analysis. 
+The \Rpackage{meshr} package accepts selected and universal genes as input, and returns significantly overrepresented MeSH terms. It is used in conjunction with \Rpackage{MeSH.db} package and one of the annotation packages, (e.g., \Rpackage{org.MeSH.Hsa.db}). This section serves as a quick guide to the \Rpackage{meshr}, while illustrating entire process to perform a MeSH enrichment analysis. 
 
 Here, we use the example data set taken from the Bioconductor package \Rpackage{cummeRbund}. The example data are located in library/cummeRbund/extdata/. This RNA-Seq data were taken from three samples, "iPS", "hESC", and  "Fibroblasts". 
-We first create two objects of gene sets, i.e., selected and universal genes, 
-by comparing significantly regulated genes between iPS and hESC under the significance level of 0.05. We then map the Gene Symbols to Entrez Gene IDs through the \Rpackage{org.Hs.eg.db} package. Pre-processed Gene IDs are easily accessible by $\bf{data}$ function.
+We first created two objects of gene sets, i.e., selected and universal genes, 
+by comparing significantly regulated genes between iPS and hESC under the significance level of 0.05, then mapped the Gene Symbols to Entrez Gene IDs through the \Rpackage{org.Hs.eg.db} package. Pre-processed Gene IDs are easily accessible by $\bf{data}$ function.
 
 \begin{center}
 <<echo=TRUE,print=FALSE>>=
