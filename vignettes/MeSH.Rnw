@@ -112,7 +112,7 @@ For some minor species including non-model organisms, which have no sufficient d
       Method & Way of corresponding Entrez Gene IDs and MeSH IDs \\ \hline \hline
       Gendoo & Text-mining \\ \hline
       gene2pubmed & Manual curation by NCBI teams \\ \hline
-      RBBH & sequence homology with BLASTP search (E-value < $10^{-200}$) \\ \hline
+      RBBH & sequence homology with BLASTP search (E-value < $10^{-50}$) \\ \hline
 \end{tabular}
   \end{table}
 \end{center}
