@@ -121,7 +121,7 @@ For some minor species including non-model organisms, which have no sufficient d
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\linewidth,angle=270]{fig3.eps}
+\includegraphics[width=\linewidth,angle=270]{fig3.png}
 \caption{120 organisms for org.MeSH.XXX.db and those source databases}
 \label{fig3}
 \end{figure}
