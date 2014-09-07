@@ -22,7 +22,10 @@
 \alias{pvalueCutoff<-,MeSHHyperGParams-method}
 
 \alias{pAdjust}
+\alias{pAdjust<-}
 \alias{pAdjust,MeSHHyperGParams-method}
+\alias{pAdjust<-,MeSHHyperGParams,character-method}
+
 
 \alias{makeValidParams,MeSHHyperGParams-method}
 

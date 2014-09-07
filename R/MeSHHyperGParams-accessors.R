@@ -93,11 +93,22 @@ setReplaceMethod("database", c("MeSHHyperGParams", "character"),
     r
   })
 
+
+setMethod("pAdjust", "MeSHHyperGParams", function(r) r@pAdjust)
+setReplaceMethod("pAdjust", c("MeSHHyperGParams", "character"), 
+    function(r, value) {
+    r@pAdjust <- value
+    r
+  })
+
+
 ## Based on Category/R/HyperGParams-accessors.R
 ## Generic is defined in Category/R/AllGeneric.R
 setMethod("pvalueCutoff", "MeSHHyperGParams", function(r) r@pvalueCutoff)
-
-setMethod("pAdjust", "MeSHHyperGParams", function(r) r@pAdjust)
+setReplaceMethod("pvalueCutoff", "MeSHHyperGParams", function(r, value) {
+    r@pvalueCutoff <- value
+    r
+})
 
 
 

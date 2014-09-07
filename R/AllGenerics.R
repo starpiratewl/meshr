@@ -10,6 +10,9 @@ setGeneric("universeGeneIds<-",
 setGeneric("universeGeneIds", function(r) standardGeneric("universeGeneIds"))
 
 setGeneric("pAdjust", function(r) standardGeneric("pAdjust"))
+setGeneric("pAdjust<-", function(r, value) standardGeneric("pAdjust<-"))
+
+setGeneric("pvalueCutoff<-", function(r, value) standardGeneric("pvalueCutoff<-"))
 
 setGeneric("meshIds", function(r) standardGeneric("meshIds"))
 

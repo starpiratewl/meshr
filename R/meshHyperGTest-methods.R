@@ -49,12 +49,6 @@ setMethod("meshHyperGTest", signature(p="MeSHHyperGParams"),
     suppressWarnings(fdrtool(pvals, statistic="pvalue", plot=FALSE, verbose=FALSE)$lfdr)
   }, none = pvals)
 
-  ## Choose siginificantly enriched MeSH terms 
-  mesh.list <- names(selected.table[which(stats < p@pvalueCutoff)])
-  sort.index <- unlist(sort(stats[which(stats < p@pvalueCutoff)], index.return=TRUE)[2])
-  pval.vec <- unlist(sort(stats[which(stats < p@pvalueCutoff)], index.return=TRUE)[1])
-  mesh.list <- mesh.list[sort.index]
-
   ## Retrieve full name of MeSH category 
   mesh.cat <- p@category
 
@@ -94,14 +88,25 @@ setMethod("meshHyperGTest", signature(p="MeSHHyperGParams"),
     }
   )
 
-  ## Mapping  MeSH ID to MeSH term
+  ## Choose siginificantly enriched MeSH terms 
+  mesh.list <- names(selected.table[which(stats < p@pvalueCutoff)])
+  ## Create a data.frame
+  tmp.df <- data.frame("MESHID" = mesh.list, "PVALUE" = stats[which(stats < p@pvalueCutoff)], stringsAsFactors=FALSE)
+  ## Mapping  MeSH ID to MeSH term via MeSH.db
   mesh.df <- select(MeSH.db, keys=mesh.list, columns=c("MESHID", "MESHTERM", "CATEGORY"), keytype="MESHID")
   # remove categories not specified 
-  mesh.df <- mesh.df[mesh.cat==mesh.df[,3],][,1:2]
+  mesh.df <- mesh.df[mesh.cat==mesh.df[,3],][,c(1,2)]
+  ## merge mesh.df and tmp.df
+  mesh.df <- merge(mesh.df, tmp.df, by = "MESHID", all=TRUE)
+  ## calculate sorted index
+  sort.index <- unlist(sort(mesh.df[,3], index.return=TRUE)[2])
+  ## sort mesh.df based on p-values
+  mesh.df <- mesh.df[sort.index,]
   # remove MeSH terms appearing multiple times within same category 
   mesh.df <- mesh.df[!duplicated(mesh.df[,1]),]
-  mesh.df <- mesh.df[sort.index,]
-  mesh.df$PVALUE <- pval.vec
+  if (nrow(mesh.df) != 0){
+    rownames(mesh.df) <- 1:nrow(mesh.df)
+  }
   
   new("MeSHHyperGResult",
       meshCategory=mesh.full.cat,

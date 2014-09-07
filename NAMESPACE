@@ -39,5 +39,7 @@ exportMethods(## Results
               database,
               "database<-",
               "pvalueCutoff",
+	      "pvalueCutoff<-",
               "pAdjust",
+	      "pAdjust<-",	
               "makeValidParams")
