@@ -17,15 +17,21 @@
 \alias{meshDatabase}
 \alias{meshDatabase,MeSHHyperGResult-method}
 
+\alias{pvalues}
 \alias{pvalues,MeSHHyperGResult-method}
 
+\alias{show}
 \alias{show,MeSHHyperGResult-method}
 
+\alias{summary}
 \alias{summary,MeSHHyperGResult-method}
+
+\alias{save.pdf}
+\alias{save.pdf,MeSHHyperGResult-method}
 
 \title{Class "MeSHHyperGResult"}
 
-\description{	
+\description{
   This class represents the results of a test for overrepresentation
   of MeSH terms among genes in a selected gene set based upon the
   Hypergeometric distribution.
@@ -40,44 +46,37 @@ Objects can be created by calls of the form \code{new("MeSHHyperGResult", ...)}.
 
 
 \section{Slots}{
-	 \describe{
+   \describe{
     \item{\code{meshCategory}:}{Object of class \code{"character"} representing the category of MeSH terms tested.}
     \item{\code{meshAnnotation}:}{Object of class \code{"character"}.  The name of the annotation data used in the analysis.}
     \item{\code{meshDatabase}:}{Object of class \code{"character"}.  The name of the database used in the analysis.}
-    \item{\code{meshIds}:}{Object of class \code{"character"}.  The
-      character vector of the MeSH IDs identified  as significant
-      from the hypergeometric test.}
-    \item{\code{meshTerms}:}{Object of class \code{"character"}.  The
-      character vector of the MeSH terms identified  as significant
-      from the hypergeometric test.}
-    \item{\code{pvalues}:}{Object of class \code{"numeric"}.
-      Associated p-values of significantly enriched MeSH terms.}
+    \item{\code{ORA}:}{Object of class \code{"data.frame"}.  MeSH IDs, MeSH Terms, P-value, and other statistics is returned.}
   }
 }
 
 
 \section{Methods}{
   \describe{
-    \item{meshCategory}{\code{signature(r = "MeSHHyperGResult")}: 
+    \item{meshCategory}{\code{signature(r = "MeSHHyperGResult")}:
       Returns the MeSH category used in the analysis.}
 
-    \item{meshAnnotation}{\code{signature(r = "MeSHHyperGResult")}: 
+    \item{meshAnnotation}{\code{signature(r = "MeSHHyperGResult")}:
       Returns the name of the annotation data used in the analysis.}
-    
-    \item{meshDatabase}{\code{signature(r = "MeSHHyperGResult")}: 
+
+    \item{meshDatabase}{\code{signature(r = "MeSHHyperGResult")}:
       Returns the name of the database used in the analysis.}
 
-    \item{meshIds}{\code{signature(r = "MeSHHyperGResult")}: 
+    \item{meshIds}{\code{signature(r = "MeSHHyperGResult")}:
       Returns the character vector of the MeSH IDs identified  as significant
       in the analysis. }
 
     \item{meshTerms}{\code{signature(r = "MeSHHyperGResult")}:
       Returns the character vector of the MeSH terms identified  as significant
       in the analysis. }
-    
-    \item{pvalues}{\code{signature(r = "MeSHHyperGResult")}: 
+
+    \item{pvalues}{\code{signature(r = "MeSHHyperGResult")}:
       Returns the associated p-values of significantly enriched MeSH terms.}
-    
+
   \item{summary}{\code{signature(r = "MeSHHyperGResult")}: Returns a
       \code{data.frame} summarizing the test result.  Optional
       arguments \code{pvalue} and \code{categorySize} allow
@@ -89,6 +88,9 @@ Objects can be created by calls of the form \code{new("MeSHHyperGResult", ...)}.
 
   \item{show}{\code{signature(object = "MeSHHyperGResult")}:
       Return a short description of the result.}
+
+  \item{save.pdf}{\code{signature(object = "MeSHHyperGResult")}:
+      Return PDF files corresponding PMCID. This function is available only when using gene2pubmed as database}
   }
 }
 
