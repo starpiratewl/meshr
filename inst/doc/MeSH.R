@@ -53,7 +53,7 @@ LEU
 ### code chunk number 8: MeSH.Rnw:218-222
 ###################################################
 library("MeSH.AOR.db")
-ANC <- select(MeSH.AOR.db, keys="D007938", 
+ANC <- select(MeSH.AOR.db, keys="D007938",
         columns=c("ANCESTOR","OFFSPRING"), keytype="OFFSPRING")
 ANC
 
@@ -67,7 +67,7 @@ select(MeSH.db, keys=ANC[1,1], columns=c("MESHTERM"), keytype="MESHID")
 ###################################################
 ### code chunk number 10: MeSH.Rnw:237-241
 ###################################################
-OFF <- select(MeSH.AOR.db, keys="D007938", 
+OFF <- select(MeSH.AOR.db, keys="D007938",
        columns=c("ANCESTOR","OFFSPRING"), keytype="ANCESTOR")
 OFF
 select(MeSH.db, keys=OFF[,2], columns=c("MESHTERM"), keytype="MESHID")
@@ -77,7 +77,7 @@ select(MeSH.db, keys=OFF[,2], columns=c("MESHTERM"), keytype="MESHID")
 ### code chunk number 11: MeSH.Rnw:248-253
 ###################################################
 library("MeSH.PCR.db")
-CHI <- select(MeSH.PCR.db, keys=LEU[1,1], 
+CHI <- select(MeSH.PCR.db, keys=LEU[1,1],
        columns=c("PARENT","CHILD"), keytype="PARENT")
 head(CHI)
 head(select(MeSH.db, keys=CHI[,2], columns=c("MESHTERM"), keytype="MESHID"))
@@ -192,7 +192,7 @@ library("org.MeSH.Hsa.db")
 ###################################################
 ### code chunk number 21: MeSH.Rnw:408-410
 ###################################################
-meshParams <- new("MeSHHyperGParams", geneIds=sig.geneid.cummeRbund[,2], universeGeneIds=geneid.cummeRbund[,2], 
+meshParams <- new("MeSHHyperGParams", geneIds=sig.geneid.cummeRbund[,2], universeGeneIds=geneid.cummeRbund[,2],
                   annotation="org.MeSH.Hsa.db", category="D", database="gendoo", pvalueCutoff=0.05, pAdjust="none")
 
 
@@ -220,7 +220,7 @@ head(summary(meshR))
 category(meshParams) <- "G"
 database(meshParams) <- "gene2pubmed"
 meshR <- meshHyperGTest(meshParams)
-summary(meshR)
+meshR
 
 
 ###################################################

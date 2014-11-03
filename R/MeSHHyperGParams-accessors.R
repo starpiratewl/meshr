@@ -8,7 +8,16 @@
 ## Return a more valid instance or error
 ## Based on Category/R/HyperGParams-accessors.R
 .makeValidMeSHParams <- function(object) {
-  
+  ##
+  ## Validation of MeSH version
+  ##
+  if(meshVersion(MeSH.db)[1,2] != meshVersion(eval(parse(text=object@annotation)))[1,2]){
+    stop("\n#############################################################################\nMeSH-version of MeSH.db and org.MeSH.XXX.db-type packages must be coincided!\nPlease confirm the version of MeSH by typing\n\n'meshVersion(MeSH.db)'\n\n'meshVersion(org.MeSH.XXX.db)'\n\nand then install appropriate version of these packages\n#############################################################################")
+  }
+  ##
+  ##
+  ##
+
   sel <- geneIds(object)
   if (is.list(sel)) {
     warning("converting geneIds from list to atomic vector via unlist")
@@ -79,7 +88,7 @@ setReplaceMethod("annotation", c("MeSHHyperGParams", "character"),
 
 ## Our original
 setMethod("category", "MeSHHyperGParams", function(r) r@category)
-setReplaceMethod("category", c("MeSHHyperGParams", "character"), 
+setReplaceMethod("category", c("MeSHHyperGParams", "character"),
     function(r, value) {
     r@category <- value
     r
@@ -87,7 +96,7 @@ setReplaceMethod("category", c("MeSHHyperGParams", "character"),
 
 ## Our original
 setMethod("database", "MeSHHyperGParams", function(r) r@database)
-setReplaceMethod("database", c("MeSHHyperGParams", "character"), 
+setReplaceMethod("database", c("MeSHHyperGParams", "character"),
     function(r, value) {
     r@database <- value
     r
@@ -95,7 +104,7 @@ setReplaceMethod("database", c("MeSHHyperGParams", "character"),
 
 
 setMethod("pAdjust", "MeSHHyperGParams", function(r) r@pAdjust)
-setReplaceMethod("pAdjust", c("MeSHHyperGParams", "character"), 
+setReplaceMethod("pAdjust", c("MeSHHyperGParams", "character"),
     function(r, value) {
     r@pAdjust <- value
     r
@@ -109,6 +118,4 @@ setReplaceMethod("pvalueCutoff", "MeSHHyperGParams", function(r, value) {
     r@pvalueCutoff <- value
     r
 })
-
-
 

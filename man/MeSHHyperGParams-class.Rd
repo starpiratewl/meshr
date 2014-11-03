@@ -31,7 +31,7 @@
 
 \title{Class "MeSHHyperGParams"}
 
-\description{	
+\description{
   A parameter class for representing all parameters needed for
   running the 'meshHyperGTest' method with one of the MeSH categories
   ("Anatomy", "Organisms", "Diseases", "Chemicals and Drugs", "Analytical, Diagnostic and Therapeutic Techniques and Equipment", "Psychiatry and Psychology", "Phenomena and Processes", "Disciplines and Occupations", "Anthropology, Education, Sociology and Social Phenomena", "Technology and Food and Beverages", "Humanities", "Information Science", "Persons", "Health Care", "Publication Type", "Geographical Locations").
@@ -74,10 +74,12 @@ Objects can be created by calls of the form \code{new("MeSHHyperGParams", ...)}.
       methods for the geneIds.}
 
     \item{\code{universeGeneIds(p)}, \code{universeGeneIds(p) <- value}}{Accessor methods for the geneIds.}
-    
+
     \item{\code{annotation(p)}, \code{annotation(p) <- value}}{Accessor methods for the gene-MeSH annotation data.}
 
     \item{\code{pAdjust(p)}}{An accessor method for the choice of a method for multiple testing correction. }
+
+    \item{\code{pvalueCutoff(p)}}{An accessor method for the choice of a threshold when conducting enrichment analysis. }
   }
 }
 
