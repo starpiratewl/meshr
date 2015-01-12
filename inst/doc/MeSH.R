@@ -121,10 +121,10 @@ dbGetQuery(dbconn(MeSH.PCR.db), SQL3)
 ###################################################
 ### code chunk number 14: MeSH.Rnw:307-313
 ###################################################
-library("org.MeSH.Hsa.db")
-columns(org.MeSH.Hsa.db)
-keytypes(org.MeSH.Hsa.db)
-key_HSA <- keys(org.MeSH.Hsa.db, keytype="MESHID")
+library("MeSH.Hsa.eg.db")
+columns(MeSH.Hsa.eg.db)
+keytypes(MeSH.Hsa.eg.db)
+key_HSA <- keys(MeSH.Hsa.eg.db, keytype="MESHID")
 select(MeSH.db, keys=key_HSA[1:10], columns=c("MESHID","MESHTERM"),
        keytype="MESHID")
 
@@ -132,32 +132,32 @@ select(MeSH.db, keys=key_HSA[1:10], columns=c("MESHID","MESHTERM"),
 ###################################################
 ### code chunk number 15: MeSH.Rnw:319-335
 ###################################################
-library("org.MeSH.Aca.db")
-library("org.MeSH.Atu.K84.db")
-library("org.MeSH.Bsu.168.db")
-library("org.MeSH.Syn.db")
+library("MeSH.Aca.eg.db")
+library("MeSH.Atu.K84.eg.db")
+library("MeSH.Bsu.168.eg.db")
+library("MeSH.Syn.eg.db")
 
-species(org.MeSH.Hsa.db)
-species(org.MeSH.Aca.db)
-species(org.MeSH.Atu.K84.db)
-species(org.MeSH.Bsu.168.db)
-species(org.MeSH.Syn.db)
+species(MeSH.Hsa.eg.db)
+species(MeSH.Aca.eg.db)
+species(MeSH.Atu.K84.eg.db)
+species(MeSH.Bsu.168.eg.db)
+species(MeSH.Syn.eg.db)
 
-nomenclature(org.MeSH.Hsa.db)
-nomenclature(org.MeSH.Aca.db)
-nomenclature(org.MeSH.Atu.K84.db)
-nomenclature(org.MeSH.Bsu.168.db)
-nomenclature(org.MeSH.Syn.db)
+nomenclature(MeSH.Hsa.eg.db)
+nomenclature(MeSH.Aca.eg.db)
+nomenclature(MeSH.Atu.K84.eg.db)
+nomenclature(MeSH.Bsu.168.eg.db)
+nomenclature(MeSH.Syn.eg.db)
 
 
 ###################################################
 ### code chunk number 16: MeSH.Rnw:342-347
 ###################################################
-listDatabases(org.MeSH.Hsa.db)
-listDatabases(org.MeSH.Aca.db)
-listDatabases(org.MeSH.Atu.K84.db)
-listDatabases(org.MeSH.Bsu.168.db)
-listDatabases(org.MeSH.Syn.db)
+listDatabases(MeSH.Hsa.eg.db)
+listDatabases(MeSH.Aca.eg.db)
+listDatabases(MeSH.Atu.K84.eg.db)
+listDatabases(MeSH.Bsu.168.eg.db)
+listDatabases(MeSH.Syn.eg.db)
 
 
 ###################################################
@@ -186,41 +186,41 @@ dim(sig.geneid.cummeRbund)[1]
 ### code chunk number 20: MeSH.Rnw:395-397
 ###################################################
 library("fdrtool")
-library("org.MeSH.Hsa.db")
+library("MeSH.Hsa.eg.db")
 
 
 ###################################################
-### code chunk number 21: MeSH.Rnw:408-410
+### code chunk number 21: MeSH.Rnw:408-410 (eval = FALSE)
 ###################################################
-meshParams <- new("MeSHHyperGParams", geneIds=sig.geneid.cummeRbund[,2], universeGeneIds=geneid.cummeRbund[,2],
-                  annotation="org.MeSH.Hsa.db", category="D", database="gendoo", pvalueCutoff=0.05, pAdjust="none")
+## meshParams <- new("MeSHHyperGParams", geneIds=sig.geneid.cummeRbund[,2], universeGeneIds=geneid.cummeRbund[,2],
+##                   annotation="MeSH.Hsa.eg.db", category="C", database="gendoo", pvalueCutoff=0.05, pAdjust="none")
 
 
 ###################################################
-### code chunk number 22: MeSH.Rnw:417-418
+### code chunk number 22: MeSH.Rnw:417-418 (eval = FALSE)
 ###################################################
-meshR <- meshHyperGTest(meshParams)
+## meshR <- meshHyperGTest(meshParams)
 
 
 ###################################################
-### code chunk number 23: MeSH.Rnw:426-427
+### code chunk number 23: MeSH.Rnw:426-427 (eval = FALSE)
 ###################################################
-meshR
+## meshR
 
 
 ###################################################
-### code chunk number 24: MeSH.Rnw:435-436
+### code chunk number 24: MeSH.Rnw:435-436 (eval = FALSE)
 ###################################################
-head(summary(meshR))
+## head(summary(meshR))
 
 
 ###################################################
-### code chunk number 25: MeSH.Rnw:444-448
+### code chunk number 25: MeSH.Rnw:444-448 (eval = FALSE)
 ###################################################
-category(meshParams) <- "G"
-database(meshParams) <- "gene2pubmed"
-meshR <- meshHyperGTest(meshParams)
-meshR
+## category(meshParams) <- "G"
+## database(meshParams) <- "gene2pubmed"
+## meshR <- meshHyperGTest(meshParams)
+## meshR
 
 
 ###################################################
