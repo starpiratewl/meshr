@@ -1,11 +1,11 @@
 Package: meshr
 Title: Tools for conducting enrichment analysis of MeSH
 Description: A set of annotation maps describing the entire MeSH assembled using data from MeSH
-Version: 1.3.4
+Version: 1.3.5
 Author: Itoshi Nikaido, Koki Tsuyuzaki, Gota Morota
 Maintainer: Koki Tsuyuzaki <k.t.the-answer@hotmail.co.jp>
 Depends: R (>= 3.0.1), fdrtool, Category, BiocGenerics, methods,
-        cummeRbund, org.Hs.eg.db, MeSH.db, MeSH.AOR.db, MeSH.PCR.db,
+        cummeRbund, MeSH.db, MeSH.AOR.db, MeSH.PCR.db,
         MeSHDbi, MeSH.Hsa.eg.db, MeSH.Aca.eg.db, MeSH.Atu.K84.eg.db,
         MeSH.Bsu.168.eg.db, MeSH.Syn.eg.db
 Imports:
