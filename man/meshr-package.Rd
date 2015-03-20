@@ -13,8 +13,8 @@ Enrichment analysis for MeSH terms.
 \details{
 \tabular{ll}{
 Package: \tab meshr\cr
-Version: \tab 1.3.5\cr
-Date: \tab 1-12-2015\cr
+Version: \tab 1.3.6\cr
+Date: \tab 3-20-2015\cr
 biocViews: \tab AnnotationData, FunctionalAnnotation, Bioinformatics, Statistics, Annotation, MultipleComparisons\cr
 Depends: \tab R (>= 3.0.1), cummeRbund, org.Hs.eg.db, fdrtool, Category, BiocGenerics, methods, MeSH.db, MeSH.AOR.db, MeSH.PCR.db, MeSHDbi, MeSH.Hsa.eg.db, MeSH.Aca.eg.db, MeSH.Atu.K84.eg.db, MeSH.Bsu.168.eg.db, MeSH.Syn.eg.db\cr
 Imports: \tab \cr
