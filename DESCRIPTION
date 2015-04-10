@@ -1,4 +1,4 @@
-lsPackage: meshr
+Package: meshr
 Title: Tools for conducting enrichment analysis of MeSH
 Description: A set of annotation maps describing the entire MeSH assembled using data from MeSH
 Version: 1.3.7
