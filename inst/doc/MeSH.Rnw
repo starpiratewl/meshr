@@ -83,7 +83,7 @@ MeSH contains more than 25,000 clinical and biological terms. The amount of MeSH
   \end{table}
 \end{center}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-This vignette introduces R/Bioconductor packages for handling MeSH in R. Original MeSH data is accessible by NLM FTP site (\url{http://www.nlm.nih.gov/mesh/filelist.html}). The data are downloadable as plain-text format (ASCII MeSH; d2014.bin / q2014.bin). These files were pre-processed by our data-processing pipeline (figure 2) and corresponding information is summarized as a table in SQLite3 file and packed into \Rpackage{MeSH.db}, \Rpackage{MeSH.AOR.db}, and \Rpackage{MeSH.PCR.db}.
+This vignette introduces R/Bioconductor packages for handling MeSH in R. Original MeSH data is accessible by NLM FTP site (\url{http://www.nlm.nih.gov/mesh/filelist.html}). The data are downloadable as plain-text format (ASCII MeSH; d2015.bin / q2015.bin). These files were pre-processed by our data-processing pipeline (figure 2) and corresponding information is summarized as a table in SQLite3 file and packed into \Rpackage{MeSH.db}, \Rpackage{MeSH.AOR.db}, and \Rpackage{MeSH.PCR.db}.
 
 \clearpage
 \subsection{About MeSH}
@@ -318,19 +318,16 @@ In each $MeSH.XXX.eg.db$, $\bf{species}$ function returns the common name and $\
 \begin{center}
 <<echo=TRUE,print=FALSE,eval = FALSE>>=
 library("MeSH.Aca.eg.db")
-library("MeSH.Atu.K84.eg.db")
 library("MeSH.Bsu.168.eg.db")
 library("MeSH.Syn.eg.db")
 
 species(MeSH.Hsa.eg.db)
 species(MeSH.Aca.eg.db)
-species(MeSH.Atu.K84.eg.db)
 species(MeSH.Bsu.168.eg.db)
 species(MeSH.Syn.eg.db)
 
 nomenclature(MeSH.Hsa.eg.db)
 nomenclature(MeSH.Aca.eg.db)
-nomenclature(MeSH.Atu.K84.eg.db)
 nomenclature(MeSH.Bsu.168.eg.db)
 nomenclature(MeSH.Syn.eg.db)
 @
@@ -342,7 +339,6 @@ $\bf{listDatabases}$ function returns the source of data (figure 3). In regard t
 <<echo=TRUE,print=FALSE,eval = FALSE>>=
 listDatabases(MeSH.Hsa.eg.db)
 listDatabases(MeSH.Aca.eg.db)
-listDatabases(MeSH.Atu.K84.eg.db)
 listDatabases(MeSH.Bsu.168.eg.db)
 listDatabases(MeSH.Syn.eg.db)
 @
@@ -354,7 +350,7 @@ listDatabases(MeSH.Syn.eg.db)
 Although most of users may not be conscious of this package, \Rpackage{MeSHDbi} is important for our MeSH packages. This package regulates class definition of MeSH object (MeSHDb-class). Besides, this package constructs user's original $MeSH.XXX.eg.db$ package. $\bf{makeGeneMeSHPackage}$ easily constructs such package.
 
 \begin{center}
-<<echo=TRUE,print=FALSE,eval = FALSE>>=
+<<echo=TRUE,print=FALSE>>=
 library("MeSHDbi")
 example("makeGeneMeSHPackage")
 @
