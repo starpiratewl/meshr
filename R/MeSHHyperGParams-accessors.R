@@ -12,7 +12,7 @@
   ## Validation of MeSH version
   ##
   if(meshVersion(MeSH.db)[1,2] != meshVersion(eval(parse(text=object@annotation)))[1,2]){
-    stop("\n#############################################################################\nMeSH-version of MeSH.db and MeSH.XXX.eg.db-type packages must be coincided!\nPlease confirm the version of MeSH by typing\n\n'meshVersion(MeSH.db)'\n\n'meshVersion(MeSH.XXX.eg.db)'\n\nand then install appropriate version of these packages\n#############################################################################")
+    stop("\n#############################################################################\nMeSH-version of MeSH.db and org.MeSH.XXX.db-type packages must be coincided!\nPlease confirm the version of MeSH by typing\n\n'meshVersion(MeSH.db)'\n\n'meshVersion(org.MeSH.XXX.db)'\n\nand then install appropriate version of these packages\n#############################################################################")
   }
   ##
   ##

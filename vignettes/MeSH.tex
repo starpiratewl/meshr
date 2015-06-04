@@ -83,7 +83,7 @@ MeSH contains more than 25,000 clinical and biological terms. The amount of MeSH
   \end{table}
 \end{center}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-This vignette introduces R/Bioconductor packages for handling MeSH in R. Original MeSH data is accessible by NLM FTP site (\url{http://www.nlm.nih.gov/mesh/filelist.html}). The data are downloadable as plain-text format (ASCII MeSH; d2014.bin / q2014.bin). These files were pre-processed by our data-processing pipeline (figure 2) and corresponding information is summarized as a table in SQLite3 file and packed into \Rpackage{MeSH.db}, \Rpackage{MeSH.AOR.db}, and \Rpackage{MeSH.PCR.db}.
+This vignette introduces R/Bioconductor packages for handling MeSH in R. Original MeSH data is accessible by NLM FTP site (\url{http://www.nlm.nih.gov/mesh/filelist.html}). The data are downloadable as plain-text format (ASCII MeSH; d2015.bin / q2015.bin). These files were pre-processed by our data-processing pipeline (figure 2) and corresponding information is summarized as a table in SQLite3 file and packed into \Rpackage{MeSH.db}, \Rpackage{MeSH.AOR.db}, and \Rpackage{MeSH.PCR.db}.
 
 \clearpage
 \subsection{About MeSH}
@@ -337,17 +337,14 @@ In each $MeSH.XXX.eg.db$, $\bf{species}$ function returns the common name and $\
 \begin{Schunk}
 \begin{Sinput}
 > library("MeSH.Aca.eg.db")
-> library("MeSH.Atu.K84.eg.db")
 > library("MeSH.Bsu.168.eg.db")
 > library("MeSH.Syn.eg.db")
 > species(MeSH.Hsa.eg.db)
 > species(MeSH.Aca.eg.db)
-> species(MeSH.Atu.K84.eg.db)
 > species(MeSH.Bsu.168.eg.db)
 > species(MeSH.Syn.eg.db)
 > nomenclature(MeSH.Hsa.eg.db)
 > nomenclature(MeSH.Aca.eg.db)
-> nomenclature(MeSH.Atu.K84.eg.db)
 > nomenclature(MeSH.Bsu.168.eg.db)
 > nomenclature(MeSH.Syn.eg.db)
 \end{Sinput}
@@ -361,7 +358,6 @@ $\bf{listDatabases}$ function returns the source of data (figure 3). In regard t
 \begin{Sinput}
 > listDatabases(MeSH.Hsa.eg.db)
 > listDatabases(MeSH.Aca.eg.db)
-> listDatabases(MeSH.Atu.K84.eg.db)
 > listDatabases(MeSH.Bsu.168.eg.db)
 > listDatabases(MeSH.Syn.eg.db)
 \end{Sinput}
@@ -379,6 +375,66 @@ Although most of users may not be conscious of this package, \Rpackage{MeSHDbi} 
 > library("MeSHDbi")
 > example("makeGeneMeSHPackage")
 \end{Sinput}
+\begin{Soutput}
+mGMSHP> ## makeGeneMeSHPackage enable users to construct
+mGMSHP> ## user's own custom MeSH package
+mGMSHP> 
+mGMSHP> ## this is test data which means the relationship between
+mGMSHP> ## Entrez gene IDs of Pseudomonas aeruginosa PAO1
+mGMSHP> ## and its MeSH IDs.
+mGMSHP> data(PAO1)
+
+mGMSHP> head(PAO1)
+  GENEID  MESHID MESHCATEGORY SOURCEID
+1 877657 D000265            D   937805
+2 877657 D000265            D   937805
+3 877657 D001412            B   937805
+4 877657 D001412            B   937805
+5 877657 D001426            D   937805
+6 877657 D001483            G   937805
+                                      SOURCEDB
+1 Bacillus subtilis subsp. spizizenii str. 168
+2 Bacillus subtilis subsp. spizizenii str. 168
+3 Bacillus subtilis subsp. spizizenii str. 168
+4 Bacillus subtilis subsp. spizizenii str. 168
+5 Bacillus subtilis subsp. spizizenii str. 168
+6 Bacillus subtilis subsp. spizizenii str. 168
+
+mGMSHP> # We are also needed to prepare meta data as follows.
+mGMSHP> data(metaPAO1)
+
+mGMSHP> metaPAO1
+              NAME                                 VALUE
+1       SOURCEDATE                          31-July-2013
+2       SOURCENAME                                BLASTP
+3        SOURCEURL ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/
+4         DBSCHEMA                  org.Pae.PAO1.MeSH.db
+5  DBSCHEMAVERSION                                   1.0
+6         ORGANISM           Pseudomonas aeruginosa PAO1
+7          SPECIES                                      
+8          package                         AnnotationDbi
+9          Db type                               BLASTDb
+10     MESHVERSION                                  2015
+
+mGMSHP> ## sets up a temporary directory for this example
+mGMSHP> ## (users won't need to do this step)
+mGMSHP> destination <- tempfile()
+
+mGMSHP> dir.create(destination)
+
+mGMSHP> ## makes an Organism package for human called Homo.sapiens
+mGMSHP> makeGeneMeSHPackage(pkgname = "MeSH.Pae.eg.db",
+mGMSHP+ 					data = PAO1,
+mGMSHP+           metadata = metaPAO1,
+mGMSHP+ 					organism = "Pseudomonas aeruginosa PAO1",
+mGMSHP+ 					version = "1.0.0",
+mGMSHP+ 					maintainer = "Koki Tsuyuzaki <k.t.the-answer@hotmail.co.jp>",
+mGMSHP+ 					author = "Koki Tsuyuzaki",
+mGMSHP+ 					destDir = destination,
+mGMSHP+ 					license="Artistic-2.0")
+Creating package in /var/folders/k0/tk8gl4bj2_v2mbjx80ydsznw0000gn/T//Rtmp0BIvIT/file866a2d887d9/MeSH.Pae.eg.db 
+[1] TRUE
+\end{Soutput}
 \end{Schunk}
 \end{center}
 
@@ -498,8 +554,9 @@ This vignette was built on:
 > sessionInfo()
 \end{Sinput}
 \begin{Soutput}
-R version 3.1.1 (2014-07-10)
+R version 3.2.0 (2015-04-16)
 Platform: x86_64-apple-darwin13.4.0 (64-bit)
+Running under: OS X 10.10.3 (Yosemite)
 
 locale:
 [1] ja_JP.UTF-8/ja_JP.UTF-8/ja_JP.UTF-8/C/ja_JP.UTF-8/ja_JP.UTF-8
@@ -507,8 +564,14 @@ locale:
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
+other attached packages:
+[1] MeSHDbi_1.4.0
+
 loaded via a namespace (and not attached):
-[1] tools_3.1.1
+ [1] IRanges_2.2.3        parallel_3.2.0       DBI_0.3.1           
+ [4] tools_3.2.0          Biobase_2.28.0       AnnotationDbi_1.30.1
+ [7] RSQLite_1.0.0        S4Vectors_0.6.0      BiocGenerics_0.14.0 
+[10] GenomeInfoDb_1.4.0   stats4_3.2.0        
 \end{Soutput}
 \end{Schunk}
 
