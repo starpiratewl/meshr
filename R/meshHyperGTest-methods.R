@@ -67,7 +67,7 @@ setMethod("meshHyperGTest", signature(p="MeSHHyperGParams"),
     }else{
       outputA <- outputA[1,]
       outputA[,] <- NA
-      stop("None of MeSH Term is significant !")
+      warning("None of MeSH Term is significant !")
     }
 
   FromMeSHdb <- select(MeSH.db, keys=names(selected.mesh), columns=c('MESHID', 'MESHTERM'), keytype='MESHID')

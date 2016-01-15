@@ -1,3 +1,7 @@
+VERSION 1.6.1
+------------------------
+   o examples in vignette is simplified because of TIMEOUT in R CMD CHECK.
+
 VERSION 1.4.0
 ------------------------
    o MeSH.Atu.K84.eg.db was removed from Depends
